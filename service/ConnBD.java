@@ -37,8 +37,8 @@ public class ConnBD {
 	    }
 	
 	
-	public ArrayList<Etudiant> lister() {
-		ArrayList<Etudiant> etudiants=new ArrayList<Etudiant>();
+	public List<Etudiant> lister() {
+		List<Etudiant> etudiants=new ArrayList<Etudiant>();
 		
 		try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 				PreparedStatement stmt = conn.prepareStatement("select * from Etudiant");
@@ -47,7 +47,7 @@ public class ConnBD {
 			ResultSet resultat =stmt.executeQuery();
 		
 		   while(resultat.next()) {
-			   Etudiant e= new Etudiant(resultat.getString("nom"),resultat.getString("prenom"),resultat.getString("login"),resultat.getString("password"));
+			   Etudiant e= new Etudiant(resultat.getInt("id"),resultat.getString("nom"),resultat.getString("prenom"),resultat.getString("login"),resultat.getString("password"));
 			   etudiants.add(e);
 		   }
 		

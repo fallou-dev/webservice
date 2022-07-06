@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -52,15 +53,13 @@ public class GestionEtudiantWs {
 		return mess;
 	}
 	
-	public void  lister()
+	public  List<Etudiant> lister()
 	{
 		ConnBD bd=new ConnBD();
-		ArrayList<Etudiant> liste= bd.lister();
-		System.out.println("nom"+" prenom"+" login"+" password");
-		for(Etudiant e: liste) {
-			System.out.print(e.getNom()+" "+e.getPrenom()+" "+e.getLogin()+" "+e.getPassword());
-			System.out.println();
-		}
+		List<Etudiant> liste= bd.lister();
+		
+		
+		return liste;
 		
 		
 	}
